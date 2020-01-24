@@ -7,6 +7,14 @@
     <groupId>com.rs.sda</groupId>
     <artifactId>IssueSystem-Server</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.rs.sda</groupId>
+            <artifactId>IssueSystem-DataTransferProject</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,10 +29,10 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>sda.issuesystem.client.ClientMain</mainClass>
+                            <mainClass>sda.issuesystem.server.ServerMain</mainClass>
                         </manifest>
                     </archive>
-                    <finalName>IssueSystemClient</finalName>
+                    <finalName>IssueSystemServer</finalName>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
