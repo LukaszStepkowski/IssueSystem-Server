@@ -1,5 +1,8 @@
 package sda.issuesystem.server;
 
+import sda.issuesystem.dto.User;
+import sda.issuesystem.server.repository.UserRepository;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -22,6 +25,7 @@ public class ServerMain {
 
                 Object o = objectInputStream.readObject();
                 System.out.println(o);
+                UserRepository.USER_LIST.add((User) o);
                 objectOutputStream.writeObject("Server Response");
                 objectOutputStream.flush();
 
