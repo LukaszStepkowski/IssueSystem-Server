@@ -13,16 +13,24 @@ public class ServerMain {
         try {
             ServerSocket serverSocket = new ServerSocket(1234);
 
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("New Connection");
+            ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+
             while (true) {
-                Socket accept = serverSocket.accept();
-                System.out.println("New Connection");
-                ObjectInputStream objectInputStream = new ObjectInputStream(accept.getInputStream());
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(accept.getOutputStream());
-                System.out.println(objectInputStream.readObject());
+
+                Object o = objectInputStream.readObject();
+                System.out.println(o);
                 objectOutputStream.writeObject("Server Response");
                 objectOutputStream.flush();
-                accept.close();
+
+                if (o == null){
+                    break;
+                }
             }
+
+            clientSocket.close();
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
