@@ -30,6 +30,7 @@ public class ServerMain {
                 DataTransferObject dto = (DataTransferObject) objectInputStream.readObject();
                 System.out.println(dto.getObject());
                 DataTransferObject response = ProcessFactory.processChoice(dto).process(dto.getObject());
+                objectOutputStream.reset();
                 objectOutputStream.writeObject(response);
                 objectOutputStream.flush();
 

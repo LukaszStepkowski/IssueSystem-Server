@@ -21,11 +21,12 @@ public class UserRepository {
                 .orElse(null);
     }
 
-    public static void removeByUserID (int id) {
+    public static int removeByUserID (int id) {
         Optional<User> user = userList.stream()
                 .filter(p -> p.getId() == id)
                 .findFirst();
         userList.remove(user.get());
+        return id;
     }
 
     public static void printUserList () {

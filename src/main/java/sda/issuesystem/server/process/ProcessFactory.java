@@ -11,8 +11,7 @@ public class ProcessFactory {
                 return new AddUserProcess();
 
             case DataTransferObject.DELU:
-//                UserRepository.removeByUserID();
-                break;
+                return new DeleteUserProcess();
 
             case DataTransferObject.FUBL:
                 return new FindUserProcess();
