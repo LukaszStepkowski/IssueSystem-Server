@@ -1,16 +1,14 @@
 package sda.issuesystem.server.process;
 
 import sda.issuesystem.dto.DataTransferObject;
-import sda.issuesystem.dto.User;
-import sda.issuesystem.server.repository.UserRepository;
 
 public class ProcessFactory {
 
-    public static <T> ProcessInterface<T> processChoice (DataTransferObject<T> dto){
+    public static <T> ProcessInterface<?> processChoice (DataTransferObject<T> dto){
 
         switch (dto.getProcessName()){
             case DataTransferObject.ADU:
-                return (ProcessInterface<T>) new AddUserProcess().process((User) dto.getObject());
+                return new AddUserProcess();
 
             case DataTransferObject.DELU:
 //                UserRepository.removeByUserID();
