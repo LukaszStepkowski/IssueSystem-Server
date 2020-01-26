@@ -8,28 +8,28 @@ import java.util.Optional;
 
 public class UserRepository {
 
-    public static final List<User> USER_LIST = new ArrayList<>();
+    public static List<User> userList = new ArrayList<>();
 
-    public void addUser (User user) {
-        USER_LIST.add(user);
+    public static void addUser (User user) {
+        userList.add(user);
     }
 
-    public User searchByUserName (String userLogin){
-        Optional<User> user = USER_LIST.stream()
+    public static User searchByLogin(String userLogin){
+        Optional<User> user = userList.stream()
                 .filter(p -> p.getLogin().equals(userLogin))
                 .findFirst();
         return user.get();
     }
 
-    public void removeByUserID (int id) {
-        Optional<User> user = USER_LIST.stream()
+    public static void removeByUserID (int id) {
+        Optional<User> user = userList.stream()
                 .filter(p -> p.getId() == id)
                 .findFirst();
-        USER_LIST.remove(user.get());
+        userList.remove(user.get());
     }
 
-    public void printUserList () {
-        USER_LIST.stream()
+    public static void printUserList () {
+        userList.stream()
                 .forEach(p -> System.out.println(p));
     }
 

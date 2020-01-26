@@ -8,7 +8,7 @@ public class AddUserProcess implements ProcessInterface<User> {
 
     @Override
     public DataTransferObject<User> process(User user) {
-        UserRepository.USER_LIST.add(user);
-        return new DataTransferObject<>(DataTransferObject.ADU, user);
+        UserRepository.addUser(user);
+        return new DataTransferObject<User>(DataTransferObject.ADU, user);
     }
 }

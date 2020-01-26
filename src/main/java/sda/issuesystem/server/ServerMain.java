@@ -25,7 +25,7 @@ public class ServerMain {
 
                 Object o = objectInputStream.readObject();
                 System.out.println(o);
-                UserRepository.USER_LIST.add((User) o);
+                UserRepository.addUser((User) o);
                 objectOutputStream.writeObject("Server Response");
                 objectOutputStream.flush();
 
