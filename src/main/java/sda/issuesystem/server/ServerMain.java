@@ -3,6 +3,7 @@ package sda.issuesystem.server;
 import sda.issuesystem.dto.DataTransferObject;
 import sda.issuesystem.dto.User;
 import sda.issuesystem.server.process.ProcessFactory;
+import sda.issuesystem.server.process.ProcessInterface;
 import sda.issuesystem.server.repository.UserRepository;
 
 import java.io.IOException;
@@ -28,8 +29,8 @@ public class ServerMain {
 
                 DataTransferObject dto = (DataTransferObject) objectInputStream.readObject();
                 System.out.println(dto.getObject());
-                ProcessFactory.processChoice(dto).process(dto.getObject());
-                objectOutputStream.writeObject(dto);
+                DataTransferObject response = ProcessFactory.processChoice(dto).process(dto.getObject());
+                objectOutputStream.writeObject(response);
                 objectOutputStream.flush();
 
                 if (dto == null){

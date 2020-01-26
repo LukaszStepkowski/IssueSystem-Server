@@ -15,10 +15,10 @@ public class UserRepository {
     }
 
     public static User searchByLogin(String userLogin){
-        Optional<User> user = userList.stream()
-                .filter(p -> p.getLogin().equals(userLogin))
-                .findFirst();
-        return user.get();
+        return userList.stream()
+                .filter(p -> p.getLogin().equalsIgnoreCase(userLogin))
+                .findFirst()
+                .orElse(null);
     }
 
     public static void removeByUserID (int id) {
@@ -33,4 +33,7 @@ public class UserRepository {
                 .forEach(p -> System.out.println(p));
     }
 
+    public static List<User> getUserList() {
+        return userList;
+    }
 }

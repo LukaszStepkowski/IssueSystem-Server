@@ -19,7 +19,7 @@ public class ProcessFactory {
                 break;
 
             case DataTransferObject.GETU:
-                break;
+                return new PrintUsersProcess();
         }
 
         return null;
