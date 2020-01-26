@@ -5,7 +5,7 @@ import sda.issuesystem.server.repository.UserRepository;
 
 import java.util.List;
 
-public class PrintUsersProcess implements ProcessInterface<List> {
+public class PrintUsersProcess implements ProcessInterface<List, List> {
 
     @Override
     public DataTransferObject<List> process(List object) {

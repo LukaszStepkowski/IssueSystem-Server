@@ -4,7 +4,7 @@ import sda.issuesystem.dto.DataTransferObject;
 
 public class ProcessFactory {
 
-    public static <T> ProcessInterface<?> processChoice (DataTransferObject<T> dto){
+    public static <T> ProcessInterface<?,?> processChoice (DataTransferObject<T> dto){
 
         switch (dto.getProcessName()){
             case DataTransferObject.ADU:
@@ -15,8 +15,7 @@ public class ProcessFactory {
                 break;
 
             case DataTransferObject.FUBL:
-//                UserRepository.searchByLogin();
-                break;
+                return new FindUserProcess();
 
             case DataTransferObject.GETU:
                 return new PrintUsersProcess();

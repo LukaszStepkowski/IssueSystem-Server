@@ -4,7 +4,7 @@ import sda.issuesystem.dto.DataTransferObject;
 import sda.issuesystem.dto.User;
 import sda.issuesystem.server.repository.UserRepository;
 
-public class AddUserProcess implements ProcessInterface<User> {
+public class AddUserProcess implements ProcessInterface<User, User> {
 
     @Override
     public DataTransferObject<User> process(User user) {
